@@ -1,0 +1,72 @@
+package Projects;
+
+import java.util.Scanner;
+
+public class CinemaIngress {
+    static Scanner input = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        boolean isRunning = true;
+
+        String[][] cinemaPlace = new String[3][3];
+        // {{ "","","" }}
+        // ,{{"","","" }},
+        // {{"","","" }}
+        cinemaPlace[0][0] = "Subhan";
+        cinemaPlace[1][0] = "Rovsan";
+        cinemaPlace[2][2] = "Ali";  // I reserved some seats for testing purpose!
+        System.out.println("Welcome to Ingress Cinema");
+
+        while (isRunning) {
+            System.out.println("1. Show Available Seats");
+            System.out.println("2. Reserve a Seat");
+            System.out.println("3. Exit"); // Display Menu.
+
+            System.out.print("Choose your option (1-3): ");
+            int choice = input.nextInt();
+
+            switch (choice) {
+                case 1 -> showSeats(cinemaPlace);
+                case 2 -> reserveSeat(cinemaPlace);
+                case 3 -> isRunning = false;
+                default -> System.out.println("Invalid choice");
+            }
+        }
+    }
+
+    public static void showSeats(String[][] cinemaPlace) {
+        System.out.println("\nCurrent Seating Arrangement:");
+        for (int i = 0; i < cinemaPlace.length; i++) {
+            for (int j = 0; j < cinemaPlace[i].length; j++) {
+                if (cinemaPlace[i][j] == null) {
+                    System.out.printf("[Empty(%d,%d)] ", i, j);
+                } else {
+                    System.out.print("[" + cinemaPlace[i][j] + "(" + i + "," + j + ")" + "] ");
+                }
+            }
+        }
+        System.out.println();
+    }
+
+    public static void reserveSeat(String[][] cinemaPlace) {
+        System.out.print("Enter the row number of the seat you want to reserve: ");
+        int row = input.nextInt();
+        System.out.print("Enter the column number of the seat you want to reserve: ");
+        int col = input.nextInt();
+        input.nextLine();
+
+        if (row < 0 || row >= cinemaPlace.length || col < 0 || col >= cinemaPlace[0].length) {
+            System.out.println("Error! The row or column you entered is incorrect.");
+            return;
+        }
+        if (cinemaPlace[row][col] == null) {
+            System.out.print("Enter your name: ");
+            String name = input.nextLine();
+            cinemaPlace[row][col] = name;
+            System.out.println("Seat successfully reserved!");
+        } else {
+            System.out.println("The seat you want to reserve is already taken!");
+        }
+    }
+}

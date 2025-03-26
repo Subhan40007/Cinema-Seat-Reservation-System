@@ -38,8 +38,11 @@ Welcome to Ingress Cinema
 Choice your option(1-3): 1
 
 Current Seating Arrangement
+
 [Empty(0,0)] [Subhan(1,0)] [Empty(0,2)] 
+
 [Empty(1,0)] [Empty(1,1)] [Empty(1,2)] 
+
 [Empty(2,0)] [Empty(2,1)] [Ali(2,2)] 
 
 1. Show Available seats
